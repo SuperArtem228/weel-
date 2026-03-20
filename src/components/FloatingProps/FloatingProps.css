@@ -1,0 +1,79 @@
+.floating-props {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.floating-prop {
+  position: absolute;
+  opacity: 0.85;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+}
+
+/* Wheel screen props */
+.fp-chip-bl {
+  bottom: 2%;
+  left: -8%;
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+.fp-gift-br {
+  bottom: 2%;
+  right: -2%;
+  animation: floatMed 4.5s ease-in-out infinite 0.5s;
+}
+
+.fp-chip-tr {
+  top: 4%;
+  right: 4%;
+  opacity: 0.6;
+  animation: floatFast 4s ease-in-out infinite 1s;
+}
+
+.fp-abstract-tl {
+  top: 6%;
+  left: 2%;
+  opacity: 0.5;
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+/* Final offer props */
+.fp-offer-dice-tl {
+  top: 18%;
+  left: 8%;
+  transform: rotate(-25deg);
+  animation: floatMed 5s ease-in-out infinite;
+}
+
+.fp-offer-chip-r {
+  top: 40%;
+  right: 4%;
+  animation: floatSlow 4.5s ease-in-out infinite 0.8s;
+}
+
+.fp-offer-chip-b {
+  bottom: 15%;
+  left: 30%;
+  opacity: 0.5;
+  animation: floatFast 5.5s ease-in-out infinite 0.3s;
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes floatMed {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-12px) rotate(3deg); }
+}
+
+@keyframes floatFast {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}

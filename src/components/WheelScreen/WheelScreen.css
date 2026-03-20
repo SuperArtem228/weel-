@@ -1,0 +1,265 @@
+.wheel-screen {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 16px 40px;
+  background: linear-gradient(135deg, #0a0e1a 0%, #0d1526 30%, #0f1a30 60%, #0a0e1a 100%);
+  overflow: hidden;
+}
+
+/* Diagonal decorative lines (teal/blue like reference) */
+.ws-bg-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ws-bg-lines::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 120%;
+  height: 140%;
+  background:
+    linear-gradient(155deg, transparent 30%, rgba(0, 200, 180, 0.06) 31%, rgba(0, 200, 180, 0.06) 31.5%, transparent 32%),
+    linear-gradient(155deg, transparent 40%, rgba(30, 100, 220, 0.05) 41%, rgba(30, 100, 220, 0.05) 41.5%, transparent 42%),
+    linear-gradient(155deg, transparent 55%, rgba(0, 200, 180, 0.04) 56%, rgba(0, 200, 180, 0.04) 56.5%, transparent 57%),
+    linear-gradient(155deg, transparent 65%, rgba(30, 100, 220, 0.04) 66%, rgba(30, 100, 220, 0.04) 66.5%, transparent 67%);
+}
+
+.ws-bg-lines::after {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -20%;
+  width: 130%;
+  height: 130%;
+  background:
+    linear-gradient(165deg, transparent 20%, rgba(0, 180, 160, 0.04) 21%, rgba(0, 180, 160, 0.04) 21.3%, transparent 22%),
+    linear-gradient(165deg, transparent 35%, rgba(40, 80, 200, 0.03) 36%, rgba(40, 80, 200, 0.03) 36.3%, transparent 37%);
+}
+
+/* Tabs */
+.ws-tabs {
+  display: flex;
+  gap: 0;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 30px;
+  padding: 3px;
+  margin-bottom: 20px;
+  z-index: 2;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ws-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 26px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Inter', 'Arial', sans-serif;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.ws-tab-active {
+  background: rgba(76, 175, 80, 0.15);
+  color: #fff;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.ws-tab-icon {
+  font-size: 14px;
+}
+
+/* Header */
+.ws-header {
+  text-align: center;
+  margin-bottom: 12px;
+  z-index: 2;
+}
+
+.ws-header-sub {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0 0 4px;
+  font-family: 'Inter', 'Arial', sans-serif;
+}
+
+.ws-header-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  font-family: 'Inter', 'Arial', sans-serif;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Attempts indicator */
+.ws-attempts {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  z-index: 2;
+}
+
+.ws-attempt-dot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+.ws-attempt-dot.active {
+  color: #fff;
+  background: rgba(76, 175, 80, 0.2);
+  border-color: #4caf50;
+  box-shadow: 0 0 12px rgba(76, 175, 80, 0.35);
+}
+
+.ws-attempt-dot.completed {
+  color: #4caf50;
+  background: rgba(76, 175, 80, 0.1);
+  border-color: rgba(76, 175, 80, 0.35);
+  font-size: 14px;
+}
+
+.ws-attempt-dot.spinning {
+  animation: dotGlow 1s ease-in-out infinite;
+}
+
+@keyframes dotGlow {
+  0%, 100% { box-shadow: 0 0 8px rgba(76, 175, 80, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(76, 175, 80, 0.6); }
+}
+
+.ws-attempts-text {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: 'Inter', sans-serif;
+  margin-left: 4px;
+}
+
+/* Wheel wrapper */
+.ws-wheel-wrapper {
+  position: relative;
+  z-index: 2;
+  margin: 4px 0;
+}
+
+/* Result overlay */
+.ws-result-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.ws-result-card {
+  position: relative;
+  background: linear-gradient(145deg, #1e1e32 0%, #111122 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 36px 44px;
+  text-align: center;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+.ws-result-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 50% 80%, rgba(76, 175, 80, 0.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.ws-result-label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.45);
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.ws-result-value {
+  font-size: 52px;
+  font-weight: 900;
+  color: #fff;
+  font-family: 'Inter', 'Arial Black', sans-serif;
+  text-shadow: 0 0 30px rgba(76, 175, 80, 0.3);
+  margin-bottom: 4px;
+}
+
+.ws-result-type {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.35);
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 18px;
+}
+
+.ws-result-remaining {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 22px;
+}
+
+.ws-result-btn {
+  padding: 14px 48px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #5bca5f 0%, #4caf50 50%, #388e3c 100%);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 2px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(76, 175, 80, 0.35);
+  transition: all 0.2s ease;
+}
+
+.ws-result-btn:hover {
+  box-shadow: 0 6px 28px rgba(76, 175, 80, 0.5);
+  transform: translateY(-1px);
+}
+
+.ws-result-btn:active {
+  transform: translateY(0);
+}
