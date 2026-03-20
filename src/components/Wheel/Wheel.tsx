@@ -168,14 +168,8 @@ const Wheel = forwardRef<WheelRef, WheelProps>(({ disabled, onCenterClick }, ref
           height={WHEEL_SIZE}
           className="wheel-svg"
         >
-          <defs>
-            <filter id="wheelShadow">
-              <feDropShadow dx="0" dy="0" stdDeviation="8" floodColor="rgba(0,0,0,0.6)" />
-            </filter>
-          </defs>
-
           {/* Outer dark rim */}
-          <circle cx={CENTER} cy={CENTER} r={OUTER_RADIUS + 8} fill="#1a1a1a" filter="url(#wheelShadow)" />
+          <circle cx={CENTER} cy={CENTER} r={OUTER_RADIUS + 8} fill="#1a1a1a" />
           <circle cx={CENTER} cy={CENTER} r={OUTER_RADIUS + 6} fill="#111" stroke="#333" strokeWidth="1" />
 
           {/* Sectors */}
